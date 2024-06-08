@@ -675,25 +675,48 @@ fun CheckboxComponentPreview() {
 }
 
 @Composable
-fun DeleteListItem(robot: MobileRobot, db: DataBaseHandler)
+fun DeleteListItem(robot: MobileRobot, db: DataBaseHandler, NavController: NavHostController)
 {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp)
-    ) {
-        //Text(text = robot.robotName, style = MaterialTheme.typography.body1)
-        TextComponent(textValue = robot.robotName, textSize = 20.sp)
+//    Row(
+//        verticalAlignment = Alignment.CenterVertically,
+//        modifier = Modifier
+//            .fillMaxWidth()
+//            .padding(16.dp)
+//    ) {
+//        //Text(text = robot.robotName, style = MaterialTheme.typography.body1)
+//        TextComponent(textValue = robot.robotName, textSize = 20.sp)
+//        Image(
+//            painter = painterResource(id = R.drawable.trush),
+//            contentDescription = "Delete",
+//            modifier = Modifier
+//                .size(60.dp)
+//                //.padding(end = 8.dp)
+//                .clickable {
+//                    db.deleteData(robot.id)
+//                }
+//        )
+//    }
+    Row (modifier = Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically){
+        Text(
+            text = robot.robotName,//"Witaj w menadżerze urządzeń mobilnych!",
+            color = Color.Black,
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Medium
+        )
+
+        Spacer(modifier = Modifier.weight(1f))
+
         Image(
-            painter = painterResource(id = R.drawable.trush),
-            contentDescription = "Delete",
             modifier = Modifier
-                .size(40.dp)
-                .padding(end = 8.dp)
-                .clickable {
+                .size(80.dp)
+                .clickable(onClick = {
                     db.deleteData(robot.id)
-                }
+                    NavController.navigate(Routes.DELETE_ROBOT_SCREEN)
+                }),
+            painter = painterResource(id = R.drawable.trush),
+            contentDescription = "Logo"
+
         )
     }
 }

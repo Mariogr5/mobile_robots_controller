@@ -40,9 +40,9 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel,
                     context: Context = LocalContext.current,
                     db: DataBaseHandler = DataBaseHandler(context)
 ) {
-    db.insertData(MobileRobot(RobotTypes.DRIVING_ROBOT,"Driver", 50, "Dupson"))
-    db.insertData(MobileRobot(RobotTypes.WALKING_ROBOT,"Walker", 50, "Dupson"))
-    db.insertData(MobileRobot(RobotTypes.FLYING_ROBOT,"Flyer", 50, "Dupson"))
+//    db.insertData(MobileRobot(RobotTypes.DRIVING_ROBOT,"Driver", 50, "Dupson"))
+//    db.insertData(MobileRobot(RobotTypes.WALKING_ROBOT,"Walker", 50, "Dupson"))
+//    db.insertData(MobileRobot(RobotTypes.FLYING_ROBOT,"Flyer", 50, "Dupson"))
     //var dupa = db.readDataByType(RobotTypes.DRIVING_ROBOT)
     val allrobots = db.readData()
     Surface(
@@ -106,6 +106,15 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel,
                 "Create new mobile robot profile",
                 clickAction = {
                         NavController.navigate(Routes.CREATE_ROBOT_SCREEN)
+                }
+            )
+            Spacer(modifier = Modifier.size(50.dp))
+            TextComponent(textValue = "Delete mobile robot profile", textSize = 20.sp)
+            Spacer(modifier = Modifier.size(50.dp))
+            ButtonComponent (
+                "Delete mobile robot profile",
+                clickAction = {
+                    NavController.navigate(Routes.DELETE_ROBOT_SCREEN)
                 }
             )
         }
