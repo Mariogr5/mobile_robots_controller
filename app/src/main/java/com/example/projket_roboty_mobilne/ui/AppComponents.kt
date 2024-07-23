@@ -64,7 +64,6 @@ import org.jetbrains.annotations.ApiStatus.Internal
 @Composable
 fun TopBar(ualue: String, navController: NavController)
 {
-    //val navController = NavController
 
     Row (modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically){
@@ -255,7 +254,6 @@ fun TwoButtonsComponent(
                 TextComponent(textValue = textFirstButton, textSize = 20.sp)
             }
         }
-        //Spacer(modifier = Modifier.weight(1f))
         else {
             Button(
                 modifier = Modifier
@@ -333,7 +331,8 @@ fun DropDownMenu(
                     isExpanded = false
                     name = robot.robotName
                     variant = robot.robotType
-                    onTextChange(variant)
+                    //onTextChange(variant)
+                    onTextChange(name)
                 })
             }
         }
@@ -545,7 +544,6 @@ fun FlyConsoleArrow(userInputViewModel: UserInputViewModel)
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
-        //modifier = Modifier.fillMaxWidth()
     ) {
 
 
@@ -560,7 +558,6 @@ fun FlyConsoleArrow(userInputViewModel: UserInputViewModel)
                     MotionEvent.ACTION_DOWN -> {
                         isPressed_up = true
                         currentHeight += 3
-                        //userInputViewModel.uiControllerState.value.selectedSpeed
                         userInputViewModel.onEvent(
                             UserDataUIEvents.FlyEvent(currentHeight)
                         )
@@ -586,7 +583,6 @@ fun FlyConsoleArrow(userInputViewModel: UserInputViewModel)
         modifier = Modifier
             .size(64.dp)
             .background(if (isPressed_down) Color.Gray else Color.LightGray)
-            //.fillMaxSize()
             .pointerInteropFilter { motionEvent ->
                 when (motionEvent.action) {
                     MotionEvent.ACTION_DOWN -> {
@@ -677,25 +673,6 @@ fun CheckboxComponentPreview() {
 @Composable
 fun DeleteListItem(robot: MobileRobot, db: DataBaseHandler, NavController: NavHostController)
 {
-//    Row(
-//        verticalAlignment = Alignment.CenterVertically,
-//        modifier = Modifier
-//            .fillMaxWidth()
-//            .padding(16.dp)
-//    ) {
-//        //Text(text = robot.robotName, style = MaterialTheme.typography.body1)
-//        TextComponent(textValue = robot.robotName, textSize = 20.sp)
-//        Image(
-//            painter = painterResource(id = R.drawable.trush),
-//            contentDescription = "Delete",
-//            modifier = Modifier
-//                .size(60.dp)
-//                //.padding(end = 8.dp)
-//                .clickable {
-//                    db.deleteData(robot.id)
-//                }
-//        )
-//    }
     Row (modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically){
         Text(

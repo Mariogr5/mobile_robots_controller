@@ -26,14 +26,8 @@ import com.example.projket_roboty_mobilne.ui.TopBar
 fun DeleteRobotScreen(NavController: NavHostController, context: Context = LocalContext.current,
                       db: DataBaseHandler = DataBaseHandler(context)
 ){
-    //var allrobots = db.readData()
     var allrobots = db.readData()
 
-//    LazyColumn {
-//        items(allrobots){ items = allrobots, itemcontent{
-//                DeleteListItem(robot = item., db = db)
-//        }
-//    }
     Surface(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -50,9 +44,6 @@ fun DeleteRobotScreen(NavController: NavHostController, context: Context = Local
             }
         }
 
-//    items.forEachIndexed{index, mobileRobots ->
-//        DeleteListItem(robot = mobileRobots[index], db = db)
-//    }
     }
 }
 

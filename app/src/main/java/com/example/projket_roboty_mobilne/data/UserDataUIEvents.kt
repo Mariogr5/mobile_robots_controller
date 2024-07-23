@@ -19,7 +19,6 @@ sealed class UserDataUIEvents
     data class StopFlyEvent(val down: Int = 0): UserDataUIEvents()
 
 
-    data class CreateMobileRobotEvent(val robot: MobileRobot) : UserDataUIEvents()
 }
 
 

@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,7 +30,8 @@ fun WelcomeScreen(NavController: NavHostController){
     ) {
         Column(modifier = Modifier
             .fillMaxSize()
-            .padding(18.dp))
+            .padding(18.dp)
+            .verticalScroll(rememberScrollState()))
         {
             TopBar("Welcome", NavController)
             TextComponent(textValue = "Welcome in Mobile Manager!!. Mobile Manager Application allows you to select your mobile robots and add to your account.", textSize = 24.sp)
@@ -38,14 +41,6 @@ fun WelcomeScreen(NavController: NavHostController){
             StartButton(NavController = NavController)
 
         }
-//        Text(
-//            modifier = Modifier
-//                .fillMaxWidth()
-//                .height(80.dp),
-//            text = Routes.WELCOME_SCREEN
-//        )
-
-
     }
 }
 

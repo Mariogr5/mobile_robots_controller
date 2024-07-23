@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -50,7 +52,7 @@ fun DrivingRobotScreen(robotName: String?, description: String?, max_speed: Int?
     Surface (
         modifier = Modifier.fillMaxSize()
     ){
-            Column {
+            Column (modifier = Modifier.verticalScroll(rememberScrollState())){
                 TopBar(ualue = "$robotName", navController)
                 TextComponent(textValue = "Driving Robot", textSize = 20.sp)
                 TextComponent(textValue = description.toString(), textSize = 16.sp)

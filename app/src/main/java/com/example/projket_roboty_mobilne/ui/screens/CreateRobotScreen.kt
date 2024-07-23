@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -53,7 +55,9 @@ fun CreateRobotScreen(NaVController: NavHostController, context: Context = Local
     ){
         Column(modifier = Modifier
             .fillMaxSize()
-            .padding(18.dp)) {
+            .padding(18.dp)
+            .verticalScroll(rememberScrollState()))
+        {
 
             TopBar(ualue = "Create Mobile Robot", navController = NaVController)
             Spacer(modifier = Modifier.size(70.dp))

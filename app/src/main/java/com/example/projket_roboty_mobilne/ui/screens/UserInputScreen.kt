@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -40,40 +42,41 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel,
                     context: Context = LocalContext.current,
                     db: DataBaseHandler = DataBaseHandler(context)
 ) {
-//    db.insertData(MobileRobot(RobotTypes.DRIVING_ROBOT,"Driver", 50, "Dupson"))
-//    db.insertData(MobileRobot(RobotTypes.WALKING_ROBOT,"Walker", 50, "Dupson"))
-//    db.insertData(MobileRobot(RobotTypes.FLYING_ROBOT,"Flyer", 50, "Dupson"))
-    //var dupa = db.readDataByType(RobotTypes.DRIVING_ROBOT)
     val allrobots = db.readData()
     Surface(
         modifier = Modifier.fillMaxSize()
     ) {
         Column(modifier = Modifier
             .fillMaxSize()
-            .padding(18.dp))
+            .padding(18.dp)
+            .verticalScroll(rememberScrollState()))
         {
             TopBar(ualue = "Robot variant", NavController)
             TextComponent(textValue = "Enter your mobile robot variant", textSize = 16.sp)
             Spacer(modifier = Modifier.size(50.dp))
             DropDownMenu(
                 onTextChange = {
-                    userInputViewModel.onEvent(
-                        UserDataUIEvents.VariantSelected(it)
-                    )
+//                    userInputViewModel.onEvent(
+//                        UserDataUIEvents.VariantSelected(it)
+//                    )
                     var id = -1
                     for(robot in allrobots)
                     {
-                        if(robot.robotType == it)
+                        if(robot.robotName == it)
                         {
                             id = robot.id
                             break
                         }
                     }
                     var robot : MobileRobot
+
                     if(id != -1)
                         robot = db.readDataById(id)
                     else
                         robot = MobileRobot()
+                    userInputViewModel.onEvent(
+                        UserDataUIEvents.VariantSelected(robot.robotType)
+                    )
                     Toast.makeText(context,"Wysszukano",Toast.LENGTH_SHORT).show()
                     if(robot.id != -1) {
                         userInputViewModel.onEvent(
@@ -93,10 +96,7 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel,
                 "Go to Control Panel",
                 clickAction = {
 
-                    //var robot: MobileRobot
                     val robot = userInputViewModel.uiState.value.robot
-                    //robot = MobileRobot(RobotTypes.DRIVING_ROBOT, "My First Robot", 50, "My Roooobooot")
-                    //NavController.navigate(Routes.DRIVING_ROBOT_SCREEN)
                     showControlPanelScreen(robot)
                 })
             Spacer(modifier = Modifier.size(50.dp))
@@ -118,17 +118,6 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel,
                 }
             )
         }
-//        ButtonComponent (
-//            gotToControlPanelScreen = {
-//
-//            }
-//        )
-//        TextFieldComponent( onTextChange = {
-//            userInputViewModel.onEvent(
-//                UserDataUIEvents.VariantSelected(it)
-//            )
-//        })
-
 
     }
 }

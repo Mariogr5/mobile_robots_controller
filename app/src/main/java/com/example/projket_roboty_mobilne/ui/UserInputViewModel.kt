@@ -1,11 +1,8 @@
 package com.example.projket_roboty_mobilne.ui
 
 import android.util.Log
-import android.widget.Toast
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
-import com.example.projket_roboty_mobilne.DataBase.MobileRobot
-import com.example.projket_roboty_mobilne.data.CreateMobileRobotState
 import com.example.projket_roboty_mobilne.data.UserControllerState
 import com.example.projket_roboty_mobilne.data.UserDataUIEvents
 import com.example.projket_roboty_mobilne.data.UserInputScreenState
@@ -17,7 +14,6 @@ class UserInputViewModel : ViewModel() {
     }
     var uiState = mutableStateOf(UserInputScreenState())
     var uiControllerState = mutableStateOf(UserControllerState())
-    var createMobileRobotState = mutableStateOf(CreateMobileRobotState())
 
     fun onEvent(event: UserDataUIEvents){
         when(event)
@@ -87,14 +83,6 @@ class UserInputViewModel : ViewModel() {
                 )
             }
 
-            is UserDataUIEvents.CreateMobileRobotEvent ->{
-                createMobileRobotState.value = createMobileRobotState.value.copy(
-                    robotName = event.robot.robotName,
-                    robotType = event.robot.robotType,
-                    description = event.robot.description,
-                    maxSpeed = event.robot.maxSpeed
-                )
-            }
         }
     }
 }

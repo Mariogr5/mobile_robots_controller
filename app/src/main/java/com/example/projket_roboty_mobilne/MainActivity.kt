@@ -11,8 +11,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-//            val context = this
-//            val db = DataBaseHandler(context)
             Projket_roboty_mobilneTheme {
 
                 Projekt_robotyMobilneApp()
